@@ -61,6 +61,8 @@ render_dataset/path/to/datasets
   │   ├── gLO_sFM_c01_d13_mLO1_0002.png
 ```
 
+⚠️ **Note:** You need to save the data at a resolution of **512×512**.
+
 We use the following tools (please ensure that all dependencies and pretrained checkpoints are properly set up):
 
 - UV map generation: [SMPLitex](https://github.com/dancasas/SMPLitex)
@@ -85,7 +87,7 @@ bash process.sh path/to/datasets /absolute/path/to/detectron2
 Generate foreground:
 
 ```bash
-# TODO: your command here
+python select_inference.py --input_img_path path/to/datasets/gt --save_path path/to/datasets/ref
 ```
 
 ---
