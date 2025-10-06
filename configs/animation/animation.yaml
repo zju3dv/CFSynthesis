@@ -1,0 +1,18 @@
+pretrained_base_model_path: "./pretrained_weights/stable-diffusion-v1-5/"
+pretrained_vae_path: "./pretrained_weights/sd-vae-ft-mse"
+image_encoder_path: "./pretrained_weights/image_encoder"
+denoising_unet_path: "./exp_output/stage1/path/to/denoising_unet-30000.pth"
+reference_unet_path: "./exp_output/stage1/path/to/reference_unet-30000.pth"
+pose_guider_path: "./exp_output/stage1/path/to/pose_guider-30000.pth" 
+controlnet_path: "./exp_output/stage1/path/to/controlnet-30000.pth" 
+motion_module_path: "./exp_output/stage2/path/to/motion_module-10000.pth"
+
+inference_config: "./configs/inference/inference_v2.yaml"
+weight_dtype: 'fp16'
+
+test_cases:
+  "data/asit/ref/gHO_sFM_c09_d21_mHO5_ch20.png":
+    pose: 
+      - "data/asit/train/cond_before/gHO_sFM_c02_d21_mHO5_ch20.mp4"
+    bg: 
+      - "data/asit/train/ref_control/gHO_sFM_c02_d21_mHO5_ch20.mp4"
