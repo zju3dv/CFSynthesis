@@ -6,10 +6,10 @@
     <a href='https://xuxiaogang.com/' target='_blank'>Xiaogang Xu</a><sup>2</sup>&emsp;
     <a href='https://scholar.google.com/citations?hl=zh-CN&user=o-cC48AAAAAJ' target='_blank'>Wenqi Dong</a><sup>1</sup>&emsp;
     <a href='https://github.com/YZsZY' target='_blank'>Zesong Yang</a><sup>1</sup>&emsp;
-    <a href='https://zhpcui.github.io/' target='_blank'>Xun Cao</a><sup>1</sup>&emsp;
-    <a href='https://yoyo000.github.io/' target='_blank'>Zhaopeng Cui</a><sup>1</sup>&emsp;
+    <a href='https://zhpcui.github.io/' target='_blank'>Zhaopeng Cui</a><sup>1</sup>&emsp;
     <a href='' target='_blank'>Hujun Bao</a><sup>1</sup>&emsp;
 </div>
+<br>
 <div align='Center'>
     <sup>1</sup>Zhejiang University<sup>2</sup>The Chinese University of Hong Kong
 </div>
