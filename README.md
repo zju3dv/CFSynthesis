@@ -28,7 +28,7 @@
 
 # Overeview
 
-![Overeview](assets/teaser.pdf)
+![Overeview](assets/teaser.jpg)
 
 
 # ⚒️ Installation
