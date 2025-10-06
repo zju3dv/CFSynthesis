@@ -1,0 +1,11 @@
+__pycache__/
+pretrained_weights/
+output/
+exp_output/
+*.pth
+*.pt
+*.pkl
+*.bin
+scripts/
+src/
+tools/
