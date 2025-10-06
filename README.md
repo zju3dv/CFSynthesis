@@ -78,16 +78,17 @@ wget https://dl.fbaipublicfiles.com/densepose/densepose_rcnn_R_101_FPN_s1x/16571
   -P /path/to/detectron2/projects/DensePose/checkpoints/
 ```
 
-Generate UV maps and background:
+Generate UV maps and backgrounds:
 
 ```bash
 bash process.sh path/to/datasets /absolute/path/to/detectron2
 ```
 
-Generate foreground:
+Generate foregrounds:
 
 ```bash
 python select_inference.py --input_img_path path/to/datasets/gt --save_path path/to/datasets/ref
+python SemanticGuidedHumanMatting/seg_bg_image_folder.py --images_dir path/to/datasets/ref --result_dir path/to/datasets/ref --pretrained_weight SemanticGuidedHumanMatting/pretrained/SGHM-ResNet50.pth
 ```
 
 ---
