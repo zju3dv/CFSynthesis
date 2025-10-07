@@ -34,7 +34,7 @@ from torchvision import transforms
 from tqdm.auto import tqdm
 from transformers import CLIPVisionModelWithProjection
 
-from src.dataset.restruct.dance_video import HumanDanceVideoDataset
+from src.dataset.mask.dance_video import HumanDanceVideoDataset
 from src.models.mutual_self_attention import ReferenceAttentionControl
 from src.models.pose_guider import PoseGuider
 from src.models.unet_2d_condition import UNet2DConditionModel

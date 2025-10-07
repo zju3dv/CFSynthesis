@@ -84,12 +84,6 @@ class HumanDanceDataset(Dataset):
         kps_reader = VideoReader(kps_path)
         bg_reader = VideoReader(bg_path)
 
-        # # # change camera 
-        # original_id = re.search('c\d{2}', video_path).group()
-        # # num = random.choice([i for i in range(1, 10) if i != original_id]) #random.randint(1, 9) #
-
-        # ref_reader = VideoReader(video_path.replace('gt', 'ref').replace(original_id, 'c' + str(1).zfill(2)))
-
         assert len(video_reader) == len(kps_reader) == len(bg_reader), f"{len(video_reader) = }, {len(kps_reader) = }, {len(bg_reader) = } in {video_path}"
 
         video_length = len(video_reader)
@@ -104,26 +98,30 @@ class HumanDanceDataset(Dataset):
         else:
             tgt_img_idx = random.randint(0, video_length - 1)
 
-        # ref_idx = random.randint(0, len(ref_reader) - 1)
-        # ref_img = ref_reader[ref_idx]
-
-
+        ref_idx = random.randint(0, len(video_path) - 1)
+        ref_img = ref_reader[ref_idx]
+        '''
+        process for asit data
+        '''
         # match = re.search(r'(g\w+_s\w+_d\w+_m\w+_ch01)', video_path) ### for asit
         # name = re.sub(re.search(r'c(\d+)', match[0])[0], 'c01', match[0])+'.png'
         # path='/'.join(video_path.split('/')[:-1]).replace('train/gt', 'ref')
         # ref_path = os.path.join(path, name)
         # ref_img_pil = Image.fromarray(ref_img.asnumpy())
-        # fg_mask = Image.fromarray(self.pil2binary_fg(ref_img_pil))
+        fg_mask = Image.fromarray(self.pil2binary_fg(ref_img))
 
-        pattern = r"^(TiktokDance_\d+)(\.mp4)$"
-        match = re.match(pattern,  os.path.basename(video_path))
-        prefix = match.group(1) 
-        path='/'.join(video_path.split('/')[:-1]).replace('gt', 'ref')
-        ref = os.path.join(path, prefix)
-        ref_path = os.path.join(ref, os.listdir(ref)[0])
+        '''
+        process for tiktok data
+        '''
+        # pattern = r"^(TiktokDance_\d+)(\.mp4)$"
+        # match = re.match(pattern,  os.path.basename(video_path))
+        # prefix = match.group(1) 
+        # path='/'.join(video_path.split('/')[:-1]).replace('gt', 'ref')
+        # ref = os.path.join(path, prefix)
+        # ref_path = os.path.join(ref, os.listdir(ref)[0])
         
-        ref_img_pil = Image.open(ref_path).convert('RGB')
-        fg_mask = Image.fromarray(self.pil2binary_fg(ref_img_pil))
+        # ref_img_pil = Image.open(ref_path).convert('RGB')
+        # fg_mask = Image.fromarray(self.pil2binary_fg(ref_img_pil))
 
         tgt_img = video_reader[tgt_img_idx]
         tgt_img_pil = Image.fromarray(tgt_img.asnumpy())
