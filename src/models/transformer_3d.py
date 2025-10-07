@@ -138,38 +138,12 @@ class Transformer3DModel(ModelMixin, ConfigMixin):
 
         # Blocks
         for i, block in enumerate(self.transformer_blocks):
-            # hidden_states = block(
-            #     hidden_states,
-            #     encoder_hidden_states=encoder_hidden_states,
-            #     timestep=timestep,
-            #     video_length=video_length,
-            # )
-            if self.training and self.gradient_checkpointing:
-
-                def create_custom_forward(module, return_dict=None):
-                    def custom_forward(*inputs):
-                        if return_dict is not None:
-                            return module(*inputs, return_dict=return_dict)
-                        else:
-                            return module(*inputs)
-
-                    return custom_forward
-
-                hidden_states = torch.utils.checkpoint.checkpoint(
-                    create_custom_forward(block),
-                    hidden_states,
-                    encoder_hidden_states=encoder_hidden_states,
-                    timestep=timestep,
-                    attention_mask=None,
-                    video_length=video_length
-                )
-            else:
-                hidden_states = block(
-                    hidden_states,
-                    encoder_hidden_states=encoder_hidden_states,
-                    timestep=timestep,
-                    video_length=video_length,
-                )
+            hidden_states = block(
+                hidden_states,
+                encoder_hidden_states=encoder_hidden_states,
+                timestep=timestep,
+                video_length=video_length,
+            )
 
         # Output
         if not self.use_linear_projection:

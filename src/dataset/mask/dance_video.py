@@ -99,30 +99,28 @@ class HumanDanceVideoDataset(Dataset):
         batch_index = np.linspace(
             start_idx, start_idx + clip_length - 1, self.n_sample_frames, dtype=int
         ).tolist()
-
-        # match = re.search(r'(g\w+_s\w+_d\w+_m\w+_ch01)', video_path) ### for asit
-        # name = re.sub(re.search(r'c(\d+)', match[0])[0], 'c01', match[0])+'.png'
-        # path='/'.join(video_path.split('/')[:-1]).replace('train/gt', 'ref')
-        # ref_path = os.path.join(path, name)
         
-        pattern = r"^(TiktokDance_\d+)(\.mp4)$"
-        match = re.match(pattern,  os.path.basename(video_path))
-        prefix = match.group(1) 
-        path='/'.join(video_path.split('/')[:-1]).replace('gt', 'ref')
-        ref = os.path.join(path, prefix)
-        ref_path = os.path.join(ref, os.listdir(ref)[0])
-        ref_img = Image.open(ref_path).convert('RGB')
-        fg_mask = Image.fromarray(self.pil2binary_fg(ref_img))
-
-        # # # change camera 
-        # original_id = re.search('c\d{2}', video_path).group()
-        # # num = random.choice([i for i in range(1, 10) if i != original_id]) #random.randint(1, 9) #
-
-        # ref_reader = VideoReader(video_path.replace('gt', 'ref').replace(original_id, 'c' + str(1).zfill(2)))
-
-        # ref_idx = random.randint(0, len(ref_reader) - 1)
-        # ref_img = Image.fromarray(ref_reader[ref_idx].asnumpy())
+        ''''
+        process tiktok dataset
+        '''
+        # pattern = r"^(TiktokDance_\d+)(\.mp4)$"
+        # match = re.match(pattern,  os.path.basename(video_path))
+        # prefix = match.group(1) 
+        # path='/'.join(video_path.split('/')[:-1]).replace('gt', 'ref')
+        # ref = os.path.join(path, prefix)
+        # ref_path = os.path.join(ref, os.listdir(ref)[0])
+        # ref_img = Image.open(ref_path).convert('RGB')
         # fg_mask = Image.fromarray(self.pil2binary_fg(ref_img))
+
+        ''''
+        process asit dataset
+        '''
+        match = re.search(r'(g\w+_s\w+_d\w+_m\w+_ch01)', video_path) ### for asit
+        name = re.sub(re.search(r'c(\d+)', match[0])[0], 'c01', match[0])+'.png'
+        path='/'.join(video_path.split('/')[:-1]).replace('train/gt', 'ref')
+        ref_path = os.path.join(path, name)
+        ref_img_pil = Image.fromarray(ref_img.asnumpy())
+        fg_mask = Image.fromarray(self.pil2binary_fg(ref_img_pil))
 
         # read frames and kps
         vid_pil_image_list = []

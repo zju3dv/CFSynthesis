@@ -414,19 +414,19 @@ def main(cfg):
         # strict=False,
     )
     controlnet.load_state_dict(
-        torch.load(
-            os.path.join(stage1_ckpt_dir, f"controlnet-{stage1_ckpt_step}.pth"),
-            map_location="cpu",
-        ),
+        # torch.load(
+        #     os.path.join(stage1_ckpt_dir, f"controlnet-{stage1_ckpt_step}.pth"),
+        #     map_location="cpu",
+        # ),
+        torch.load(config.controlnet_path, map_location="cpu"),
         strict=False,
     )
     pose_guider.load_state_dict(
-        # torch.load(config.pose_guider, map_location="cpu"),
-        # strict=False,
-        torch.load(
-            os.path.join(stage1_ckpt_dir, f"pose_guider-{stage1_ckpt_step}.pth"),
-            map_location="cpu",
-        ),
+        torch.load(config.pose_guider_path, map_location="cpu"),
+        # torch.load(
+        #     os.path.join(stage1_ckpt_dir, f"pose_guider-{stage1_ckpt_step}.pth"),
+        #     map_location="cpu",
+        # ),
         strict=False,
     )
 
