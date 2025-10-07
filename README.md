@@ -168,7 +168,7 @@ python -m scripts.pipeline.pose2vid \
 Extract the meta info of your dataset:
 
 ```bash
-python tools/extract_meta_info.py --root_path /path/to/your/video_dir --dataset_name asit 
+python tools/extract_meta_info.py --root_path /path/to/your/video_dir/gt --dataset_name asit 
 ```
 
 Update the training config:
