@@ -32,6 +32,7 @@ pytorch-lightning
 smplx==0.1.28
 pyrender
 yacs
+natsort
 timm
 git+https://github.com/mattloper/chumpy
 pyopengl==3.1.4

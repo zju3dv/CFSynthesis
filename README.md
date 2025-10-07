@@ -88,9 +88,66 @@ Generate foregrounds:
 
 ```bash
 python select_inference.py --input_img_path path/to/datasets/gt --save_path path/to/datasets/ref
-python SemanticGuidedHumanMatting/seg_bg_image_folder.py --images_dir path/to/datasets/ref --result_dir path/to/datasets/ref --pretrained_weight SemanticGuidedHumanMatting/pretrained/SGHM-ResNet50.pth
 ```
 
+```bash
+python SemanticGuidedHumanMatting/seg_bg_image_folder.py \
+    --images_dir path/to/datasets/ref \
+    --result_dir path/to/datasets/ref_seg \
+    --pretrained_weight SemanticGuidedHumanMatting/pretrained/SGHM-ResNet50.pth
+```
+You can now obtain the following data structure:
+```text
+/path/to/datasets
+  ├── gt
+  │   ├── gBR_sFM_c08_d06_mBR5_0001.png
+  │   ├── gBR_sFM_c08_d06_mBR5_0002.png
+  │   ├── gLO_sFM_c01_d13_mLO1_0001.png
+  │   ├── gLO_sFM_c01_d13_mLO1_0002.png
+  │   ...
+  ├── ref_control
+  │   ├── gBR_sFM_c08_d06_mBR5_0001.png
+  │   ├── gBR_sFM_c08_d06_mBR5_0002.png
+  │   ├── gLO_sFM_c01_d13_mLO1_0001.png
+  │   ├── gLO_sFM_c01_d13_mLO1_0002.png
+  ├── cond
+  │   ├── gBR_sFM_c08_d06_mBR5_0001.png
+  │   ├── gBR_sFM_c08_d06_mBR5_0002.png
+  │   ├── gLO_sFM_c01_d13_mLO1_0001.png
+  │   ├── gLO_sFM_c01_d13_mLO1_0002.png
+  ├── images-seg
+  │   ├── gBR_sFM_c08_d06_mBR5_0001.png
+  │   ├── gBR_sFM_c08_d06_mBR5_0002.png
+  │   ├── gLO_sFM_c01_d13_mLO1_0001.png
+  │   ├── gLO_sFM_c01_d13_mLO1_0002.png
+  ├── ref
+  │   ├── gLO_sFM_c01_d13_mLO1.png 
+  │   ├── gLO_sFM_c08_d13_mLO1.png 
+```
+Synthesize videos:
+```bash
+python tools/synthesize_video.py --root 4d_2/ --fps 30 --clean
+```
+
+```text
+/path/to/datasets
+  ├── gt
+  │   ├── gBR_sFM_c08_d06_mBR5.mp4
+  │   ├── gLO_sFM_c01_d13_mLO1.mp4
+  │   ...
+  ├── ref_control
+  │   ├── gBR_sFM_c08_d06_mBR5.mp4
+  │   ├── gLO_sFM_c01_d13_mLO1.mp4
+  ├── cond
+  │   ├── gBR_sFM_c08_d06_mBR5.mp4
+  │   ├── gLO_sFM_c01_d13_mLO1.mp4
+  ├── images-seg
+  │   ├── gBR_sFM_c08_d06_mBR5.mp4
+  │   ├── gLO_sFM_c01_d13_mLO1.mp4
+  ├── ref
+  │   ├── gLO_sFM_c01_d13_mLO1.png 
+  │   ├── gLO_sFM_c08_d13_mLO1.png 
+```
 ---
 
 ## Inference
@@ -104,9 +161,9 @@ python -m scripts.pipeline.pose2vid \
 
 ---
 
-# 🏋️‍♂️ Training
+## 🏋️‍♂️ Training
 
-## Data Preparation
+### Data Preparation
 
 Extract the meta info of your dataset:
 
