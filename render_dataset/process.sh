@@ -35,8 +35,8 @@ for path in "$folder"/*/; do
 
         gt_path="$(dirname "$path")/gt"
         mkdir -p "${gt_path}"
-        mv "${path}"/*.jpg "${gt_path}" 2>/dev/null || true
-        mv "${path}"/*.png "${gt_path}" 2>/dev/null || true
+        mv "${images_dir}"/*.jpg "${gt_path}" 2>/dev/null || true
+        mv "${images_dir}"/*.png "${gt_path}" 2>/dev/null || true
     fi
 done 
-find ${folder} -mindepth 1 -maxdepth 1 ! -name 'ref_control' ! -name 'cond' ! -name 'gt' -exec rm -rf {} +
+find ${folder} -mindepth 1 -maxdepth 1 ! -name 'ref_control' ! -name 'cond' ! -name 'images-seg' ! -name 'gt' -exec rm -rf {} +
