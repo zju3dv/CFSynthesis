@@ -20,7 +20,7 @@ if args.meta_info_name is None:
 
 pose_dir = args.root_path.replace('gt','cond') 
 bg_dir = args.root_path.replace('gt','ref_control')
-mask_dir = args.root_path.replace('gt','masks') 
+mask_dir = args.root_path.replace('gt','images-seg') 
 
 # collect all video_folder paths
 video_mp4_paths = set()
@@ -38,4 +38,5 @@ for video_mp4_path in video_mp4_paths:
     mask_path = os.path.join(mask_dir, relative_video_name)
     meta_infos.append({"video_path": video_mp4_path, "kps_path": kps_path, "bg_path":bg_path, "mask_path":mask_path})
 
+os.makedirs("./data", exist_ok=True)
 json.dump(meta_infos, open(f"./data/{args.meta_info_name}_meta.json", "w"))
