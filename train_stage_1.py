@@ -342,11 +342,11 @@ def main(cfg):
     )
 
     reference_unet = UNet2DConditionModel.from_pretrained(
-        cfg.pretrained_base_model_path,
+        cfg.base_model_path,
         subfolder="unet",
     ).to(device="cuda")
     denoising_unet = UNet3DConditionModel.from_pretrained_2d(
-        cfg.pretrained_base_model_path,
+        cfg.base_model_path,
         "",
         subfolder="unet",
         unet_additional_kwargs={

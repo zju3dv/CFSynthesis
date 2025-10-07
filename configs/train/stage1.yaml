@@ -39,14 +39,14 @@ noise_scheduler_kwargs:
   steps_offset:        1
   clip_sample:         false
 
-base_model_path: '/mnt/nas_9/group/cuiliyuan/3DAnimate/pretrained_weights/stable-diffusion-v1-5/' #'./pretrained_weights/stable-diffusion-v1-5'
-vae_model_path: '/mnt/nas_9/group/cuiliyuan/3DAnimate/pretrained_weights/sd-vae-ft-mse/' #'./pretrained_weights/sd-vae-ft-mse'
-image_encoder_path: '/mnt/nas_9/group/cuiliyuan/3DAnimate/pretrained_weights/image_encoder/' #'./pretrained_weights/image_encoder'
-controlnet_openpose_path: '/mnt/nas_9/group/cuiliyuan/3DAnimate/pretrained_weights/control_v11p_sd15_openpose/' #'./pretrained_weights/control_v11p_sd15_openpose/diffusion_pytorch_model.bin'
-reference_unet_path: "/mnt/nas_9/group/cuiliyuan/3DAnimate/pretrained_weights/ckpts/reference_unet.pth" #"./pretrained_weights/ckpts/reference_unet.pth"
-denoising_unet_path: "/mnt/nas_9/group/cuiliyuan/3DAnimate/pretrained_weights/ckpts/denoising_unet.pth" #"./pretrained_weights/ckpts/denoising_unet.pth"
-pose_guider_path: "/mnt/nas_9/group/cuiliyuan/3DAnimate/pretrained_weights/ckpts/pose_guider.pth" #"./pretrained_weights/ckpts/pose_guider.pth"
-controlnet_path: "/mnt/nas_9/group/cuiliyuan/3DAnimate/pretrained_weights/ckpts/controlnet.ckpt" #"./pretrained_weights/ckpts/controlnet.pth"
+base_model_path: './pretrained_weights/stable-diffusion-v1-5'
+vae_model_path: './pretrained_weights/sd-vae-ft-mse'
+image_encoder_path: './pretrained_weights/image_encoder'
+controlnet_openpose_path: './pretrained_weights/control_v11p_sd15_openpose/diffusion_pytorch_model.bin'
+reference_unet_path: "./pretrained_weights/ckpts/reference_unet.pth"
+denoising_unet_path: "./pretrained_weights/ckpts/denoising_unet.pth"
+pose_guider_path: "./pretrained_weights/ckpts/pose_guider.pth"
+controlnet_path: "./pretrained_weights/ckpts/controlnet.pth"
 
 weight_dtype: 'fp16'  # [fp16, fp32]
 uncond_ratio: 0.1
